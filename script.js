@@ -13,6 +13,6 @@ menu.onclick = () => {
 };
 
 window.onscroll = () => {
-    menu.classList.toggle('bx-x');
-    navlist.classList.toggle('active');
+    menu.classList.remove('bx-x');
+    navlist.classList.remove('active');
 };
