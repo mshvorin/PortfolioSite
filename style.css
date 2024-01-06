@@ -503,13 +503,12 @@ header.hidden {
         right: 0;
     }
     .btn {
-        width: 30%; /* Set width to 40% of the screen width */
-        justify-content: left;
+        width: 40%; /* Set width to 40% of the screen width */
+        margin: 10px; 
         /* display: inline-block; Display inline on smaller screens */
     }
     .btn2 {
-        width: 30%;
-        justify-content: right;
+        width: 40%;
     }
     h4 {
         margin: 10px 0; /* Adjust the margin as needed, top and bottom */
@@ -522,9 +521,6 @@ header.hidden {
     }
     .hero{
         background:#2d343f;
-    }
-    h4 {
-        margin: 10px 0; /* Adjust the margin as needed, top and bottom */
     }
 }
 
