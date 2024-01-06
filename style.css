@@ -473,6 +473,7 @@ form .send-btn:hover{
 
     #menu-icon {
         display: block;
+        justify-content: center;
     }
 
     .navlist {
@@ -535,7 +536,6 @@ form .send-btn:hover{
     .about-text {
         text-align: center;
     }
-
     .about-text h2 {
         font-size: var(--h2-font);
         line-height: 1.3;
