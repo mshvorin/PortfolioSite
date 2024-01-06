@@ -183,10 +183,11 @@ header.sticky{
     object-fit: cover;
     border: 7px solid var(--main-color);
     box-shadow: 0 0 20px var(--main-color);
+    transition: all .50s ease;
 }
 .about-img:hover{
-    transform: translateY(-5px) scale(1.03);
-    transition: all .50s ease;
+    transform: scale(1.03);
+    cursor: pointer;
 }
 .about-text h2{
     font-size: var(--h2-font);
@@ -398,6 +399,11 @@ form .send-btn:hover{
     color: var(--text-color);
     font-size: 27px;
 }
+.row i:hover{
+    transition: all 0.5s ease;
+    transform: translateY(-5px);
+    background: #c3cad5;
+}
 @media (max-width: 1380px){
     header{
         padding: 20px 5%;
@@ -501,7 +507,7 @@ form .send-btn:hover{
     .about-img img{
         text-align: center;
         width: 100%;
-        height: 300px;
+        height: 150px;
         max-width: 300px;
         border-radius: 50%;
         object-fit: cover;
