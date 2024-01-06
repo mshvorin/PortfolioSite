@@ -473,6 +473,9 @@ header.hidden {
     .social {
         margin-bottom: 20px;
     }
+    h4 {
+        margin: 10px 0; /* Adjust the margin as needed, top and bottom */
+    }
     .logo {
         font-size: 24px;
     }
@@ -510,6 +513,9 @@ header.hidden {
     }
     .hero{
         background:#2d343f;
+    }
+    h4 {
+        margin: 10px 0; /* Adjust the margin as needed, top and bottom */
     }
 }
 
