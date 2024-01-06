@@ -473,9 +473,6 @@ header.hidden {
     .social {
         margin-bottom: 20px;
     }
-    h4 {
-        margin: 10px 0; /* Adjust the margin as needed, top and bottom */
-    }
     .logo {
         font-size: 24px;
     }
@@ -504,6 +501,18 @@ header.hidden {
 
     .navlist.active {
         right: 0;
+    }
+    .btn {
+        width: 30%; /* Set width to 40% of the screen width */
+        justify-content: left;
+        /* display: inline-block; Display inline on smaller screens */
+    }
+    .btn2 {
+        width: 30%;
+        justify-content: right;
+    }
+    h4 {
+        margin: 10px 0; /* Adjust the margin as needed, top and bottom */
     }
 }
 
