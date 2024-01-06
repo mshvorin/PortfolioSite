@@ -408,6 +408,9 @@ form .send-btn:hover{
     transform: translateY(-5px);
     background: #c3cad5;
 }
+header.hidden {
+    display: none;
+}
 @media (max-width: 1380px){
     header{
         padding: 20px 5%;
