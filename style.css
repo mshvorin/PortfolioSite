@@ -149,6 +149,7 @@ section{
     font-size: 15px;
     font-weight: 600;
     transition: all .50s ease;
+    margin-bottom: 15px;
 }
 .btn:hover{
     background: transparent;
@@ -161,6 +162,7 @@ section{
     border: 2px solid var(--main-color);
     margin-left: 15px;
     transition: all .50s ease;
+    margin-bottom: 15px;
 }
 .btn2:hover{
     background: var(--main-color);
