@@ -18,20 +18,21 @@ window.onscroll = () => {
 };
 
 $(document).ready(function() {
-    if (window.matchMedia("(max-width: 950px) or (max-device-width: 480px)").matches) {
+    if (window.matchMedia("(max-width: 950px) and (max-device-width: 480px)").matches) {
         var lastScrollTop = 0;
         var header = $('header');
+        var scrollThreshold = 50; // Adjust this value based on your preference
 
         // Initially hide the header
         header.addClass('hidden');
 
         $(window).scroll(function() {
             var st = $(this).scrollTop();
-            if (st > lastScrollTop) {
-                // Scrolling down, show the header
+            if (st > lastScrollTop && st > scrollThreshold) {
+                // Scrolling down and below the threshold, show the header
                 header.removeClass('hidden');
             } else {
-                // Scrolling up, hide the header
+                // Scrolling up or above the threshold, hide the header
                 header.addClass('hidden');
             }
             lastScrollTop = st;
