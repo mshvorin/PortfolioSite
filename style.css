@@ -470,7 +470,9 @@ form .send-btn:hover{
     .social {
         margin-bottom: 20px;
     }
-
+    .logo {
+        font-size: 24px;
+    }
     #menu-icon {
         display: block;
         justify-content: center;
