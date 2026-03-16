@@ -1,279 +1,940 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width", initial-scale="1">
-        <title> Complete Responsive Personal Portfolio Website using HTML CSS Javascript</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    </head>
-    <body>
-        <header>
-            <a href="#" class="logo"> Matthew <span> Shvorin </span></a>
+<html lang="en">
 
-            <ul class="navlist">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew Shvorin | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-soft: #f1f5f9;
+            --text: #0f172a;
+            --muted: #475569;
+            --border: #dbe3ef;
+            --accent: #2563eb;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', sans-serif;
+            --shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+        }
 
-            </ul>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-            <!-- <div class="top-btn">
-                <a href="#contact" class="h-btn">Contact me</a>
-            </div> -->
+        html {
+            scroll-behavior: smooth;
+        }
 
-            <div class="bx bx-menu" id="menu-icon"></div>
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
 
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(219, 227, 239, 0.7) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(219, 227, 239, 0.7) 1px, transparent 1px);
+            background-size: 48px 48px;
+            opacity: 0.28;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-        </header>
+        a {
+            color: inherit;
+        }
 
-        <section class="hero" id="home">
-            <div class="main-content" data-aos="fade-in">
-                <br>
-                <br>
-                <h4> Hi There! </h4>
-                <h1> I'm <span> Matthew Shvorin </span></h1>
-                <p> I'm a Computer Science major pursuing my Bachelor's degree at Hunter College.
-                    As a Daedalus Scholar, i'm always trying to learn more and more about the world
-                    of computer science and I would always love to gain new experiences and meet new
-                    people!
-                </p>
-                <div class="social">
-                    <a href="#"><i class="ri-facebook-fill"></i></a>
-                    <a href="https://www.instagram.com/matt.shvorin/"><i class="ri-instagram-fill"></i></a>
-                    <a href="https://www.linkedin.com/in/mshvorin/"><i class="ri-linkedin-fill"></i></a>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="ri-youtube-fill"></i></a>
-                    <a href="https://www.github.com/mshvorin"><i class="ri-github-fill"></i></a>
-                </div>
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(248, 250, 252, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
 
-            <div class="main-btn">
+        .nav-inner,
+        .hero,
+        .section,
+        .footer-inner {
+            width: min(1100px, 90vw);
+            margin: 0 auto;
+        }
 
-                <a href="#contact" class="btn">Contact me</a>
-                <a href="resume.pdf" class="btn btn2" download="YourResume.pdf">Download Resume</a>
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
 
+        .brand {
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 26px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            padding: 92px 0 44px;
+            display: grid;
+            grid-template-columns: 1.35fr 0.8fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .hero > * {
+            animation: rise-in 0.7s ease both;
+        }
+
+        .hero-side {
+            animation-delay: 0.14s;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            line-height: 0.98;
+            letter-spacing: -0.05em;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 720px;
+            margin-bottom: 18px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 14px 24px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            border-color: var(--border);
+            color: var(--text);
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-side {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-side::after {
+            content: "";
+            position: absolute;
+            inset: auto -40px -40px auto;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12), transparent 68%);
+            pointer-events: none;
+        }
+
+        .hero-side h3 {
+            font-size: 1rem;
+            margin-bottom: 14px;
+        }
+
+        .hero-side p {
+            font-size: 0.98rem;
+            margin-bottom: 14px;
+        }
+
+        .signal-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .signal-item {
+            background: rgba(37, 99, 235, 0.04);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            border-radius: 14px;
+            padding: 12px 14px;
+        }
+
+        .signal-label {
+            display: block;
+            color: var(--accent);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .signal-value {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 34px 0;
+        }
+
+        .family-section {
+            width: min(1100px, 90vw);
+            margin: 0 auto;
+            padding: 8px 0 10px;
+        }
+
+        .family-card {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 22px;
+            align-items: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f6f9ff 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .family-photo {
+            width: 100%;
+            min-height: 320px;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
+        }
+
+        .family-copy {
+            padding: 6px 4px;
+        }
+
+        .family-copy .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        .family-copy h2 {
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 14px;
+        }
+
+        .family-copy p {
+            color: var(--muted);
+            font-size: 1.02rem;
+            margin-bottom: 12px;
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+            align-items: start;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.9rem, 3vw, 2.6rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .section-header p {
+            color: var(--muted);
+        }
+
+        .section-header p:empty {
+            display: none;
+        }
+
+        .two-column,
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 42px rgba(15, 23, 42, 0.08);
+            border-color: #c9d8ee;
+        }
+
+        .card h3 {
+            font-size: 1.08rem;
+            margin-bottom: 14px;
+        }
+
+        .card p {
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 42px rgba(15, 23, 42, 0.08);
+            border-color: #c9d8ee;
+        }
+
+        .stat-card strong {
+            display: block;
+            color: var(--accent);
+            font-size: 1.75rem;
+            letter-spacing: -0.04em;
+            margin-bottom: 6px;
+        }
+
+        .stat-card span {
+            color: var(--muted);
+            font-size: 0.94rem;
+            font-weight: 600;
+        }
+
+        .experience-list,
+        .project-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .experience-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 26px;
+            box-shadow: var(--shadow);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 42px rgba(15, 23, 42, 0.08);
+            border-color: #c9d8ee;
+        }
+
+        .experience-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .experience-top h3 {
+            font-size: 1.22rem;
+            margin-bottom: 4px;
+        }
+
+        .experience-top .company {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .date {
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .experience-item li {
+            color: var(--muted);
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .experience-item li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-family: var(--mono);
+            font-weight: 700;
+        }
+
+        .project-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 46px rgba(15, 23, 42, 0.09);
+            border-color: #c9d8ee;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-soft);
+            transition: transform 0.35s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .project-content {
+            padding: 22px;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            background: #e8f0ff;
+            color: var(--accent);
+            border-radius: 999px;
+            padding: 5px 10px;
+            font-size: 0.74rem;
+            font-weight: 800;
+        }
+
+        .project-content h3 {
+            font-size: 1.12rem;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .contact-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .contact-list a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            font: inherit;
+            color: var(--text);
+            transition: border-color 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #9dbcf5;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .contact-form button {
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 24px 0 42px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 14px;
+        }
+
+        .footer-links a {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            text-decoration: none;
+            transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+        }
+
+        .footer-links a:hover {
+            transform: translateY(-2px);
+            border-color: #c9d8ee;
+            color: var(--accent);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.08s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.16s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.24s;
+        }
+
+        @keyframes rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 980px) {
+            .hero,
+            .family-card,
+            .section-header,
+            .two-column,
+            .contact-grid,
+            .project-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="hub.html" class="brand">Matthew Shvorin</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
             </div>
-            <br>
-            <br>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div>
+            <span class="eyebrow">SOFTWARE ENGINEER // BROOKLYN, NY</span>
+            <h1>Software engineer working across automation and client-facing products.</h1>
+            <p>I’m Matthew Shvorin, a software engineer who’s worked across internal tools, backend systems, automation, and data-heavy workflows. The work I’m most drawn to is anything genuinely useful, especially client-facing systems, automation, and AI-driven tools.</p>
+            <p>Some of the work I’m proudest of includes building data-enrichment workflows by analyzing network requests, handling session and cookie injection, and working through reCAPTCHA-style barriers, as well as building a server-hosted trading bot that let traders send execution commands through WhatsApp.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn-primary"><i class="fa-solid fa-briefcase"></i>View Projects</a>
+                <a href="#contact" class="btn-secondary"><i class="fa-solid fa-paper-plane"></i>Contact Me</a>
+                <a href="resume.pdf" class="btn-secondary" download="Matthew_Shvorin_Resume.pdf"><i class="fa-solid fa-file-arrow-down"></i>Resume</a>
             </div>
-        </section>
-
-        <section class="about" id="about">
-            <div class="about-img" data-aos="zoom-in-down">
-                <img src="img/siblings.jpg" style="width:700px;height:600px;">
-            </div>
-
-            <div class="about-text" data-aos="zoom-in-up">
-                <h2> I am a<br> Student, <br> Software <span> Engineer, </span> <br> & Web <span> Developer</span> </h2>
-                <div class="exp-area">
-                    <p class="exp">
-                    Experience:
-                    <span> 5 Years</span>
-                    </p>
-
-                    <p class="exp">
-                        Specialty:
-                        <span> Software Engineering and Development </span>
-                    </p>
-
-                    <p class="exp">
-                        Address:
-                        <span> Brooklyn, NY </span>
-                    </p>
-
-                    <p class="exp">
-                        Email:
-                        <span> mshvorin@gmail.com </span>
-                    </p>
-
-                    <p class="exp">
-                        Phone:
-                        <span> 347-925-3059 </span>
-                    </p>
-
-                    <p class="exp">
-                        Contracting:
-                        <span> Available </span>
-                    </p>
-
-                </div>
-                <a href="#" class="btn"> View All Projects </a>
-            </div>
-        </section>
-
-        <section class="services" id="services">
-            <div class="center-text" data-aos="fade-down">
-                <h2>My <span>Services</span></h2>
-            </div>
-                <div class="services-content" data-aos="zoom-in-up">
-                    <div class="box">
-                        <img src="img/s-1.svg">
-                        <h3>UI/UX Design</h3>
-                        <!-- <p> Here is what I have done for UI/UX Design </p>
-                        <a href="#">
-                            Download now
-                            <i class="ri-arrow-right-line"></i>
-                        </a> -->
-                    </div>
-                    
-                    <div class="box">
-                        <img src="img/s-2.svg">
-                        <h3> Backend Development </h3>
-                        <!-- <p> Here is what I have done for Backend Development </p>
-                        <a href="#">
-                            Download now
-                            <i class="ri-arrow-right-line"></i>
-                        </a> -->
-                    </div>
-
-                    <div class="box">
-                        <img src="img/s-3.svg">
-                        <h3> API Integration     </h3>
-                        <!-- <p> Here is what I have done for API Integration </p>
-                        <a href="#">
-                            Download now
-                            <i class="ri-arrow-right-line"></i>
-                        </a> -->
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="portfolio" id="portfolio">
-            <div class="center-text" data-aos="fade-down">
-                <h2>My <span>Portfolio</span></h2>
-            </div>
-
-            <div class="portfolio-content" data-aos="zoom-in-up">
-                <div class="row">
-                    <img src="img/port-1.jpg">
-                    <div class="main-row">
-                        <div class="row-text">
-                            <h5> Campus/Student Management System </h5>
-                        </div>
-                        <div class="row-icon">
-                            <a href="https://github.com/StMrr/final-project-client">
-                            <i class="ri-github-fill"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h4> Site with a client/server web app to manage campuses and their students. </h4>
-                </div>
-                    
-                <div class="row">
-                    <img src="img/port-2.jpg">
-                    <div class="main-row">
-                        <div class="row-text">
-                            <h5>Website Design</h5>
-                        </div>
-                        <div class="row-icon">
-                            <i class="ri-github-fill"></i>
-                        </div>
-                    </div>
-                    <h4> In Progress </h4>
-                </div>
-                    
-                <div class="row">
-                    <img src="img/port-3.jpg">
-                    <div class="main-row">
-                        <div class=r"row-text">
-                            <h5> Trading Algorithm </h5>
-                        </div>
-                        <div class="row-icon">
-                            <i class="ri-github-fill"></i>
-                        </div>
-                    </div>
-                    <h4> In Progress </h4>
-                </div>
-            </div>
-                    
-                    
-            <!-- <div class="portfolio-content">
-                <div class="row">
-                    <img src="img/port-4.jpg">
-                    <div class="main-row">
-                        <div class="row-text">
-                            <h5>Website Design</h5>
-                        </div>
-                        <div class="row-icon">
-                            <i class="ri-github-fill"></i>
-                        </div>
-                    </div>
-                    <h4>Website Development for *insert here* </h4>
-                    
-            <div class="portfolio-content">
-                <div class="row">
-                    <img src="img/port-5.jpg">
-                    <div class="main-row">
-                        <div class="row-text">
-                            <h5>Website Design</h5>
-                        </div>
-                        <div class="row-icon">
-                            <i class="ri-github-fill"></i>
-                        </div>
-                    </div>
-                    <h4>Website Development for *insert here* </h4>
-                    
-            <div class="portfolio-content">
-                <div class="row">
-                    <img src="img/port-6.jpg">
-                    <div class="main-row">
-                        <div class="row-text">
-                            <h5>Website Design</h5>
-                        </div>
-                        <div class="row-icon">
-                            <i class="ri-github-fill"></i>
-                        </div>
-                    </div>
-                    <h4>Website Development for *insert here* </h4> -->
-        </section>
-
-        <!--contact section-->
-        <section class="contact" id="contact">
-            <div class="center-text" data-aos="fade-down">
-                <h2>Contact <span>Me </span></h2>
-            </div>
-
-            <div class="contact-form" data-aos="zoom-in">
-                <form
-                action="https://formspree.io/f/xnqeqjow"
-                method="POST"
-                >
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Email Address.." required>
-                    <textarea name="message" id="" cols="30" rows="10" placeholder="Write your message here!" required></textarea>
-                    <input type="submit" name="" value="Send Message" class="send-btn">
-                </form>
-            </div>
-        </section>
-
-        <!--footer-->
-        <div class="footer">
-            <div class="copyright">
-                <p>2023 Matthew Shvorin, All Rights Reserved.</p>
-            </div>
-            <a href="#home" class="scroll-top">
-                <i class="ri-arrow-up-s-fill"></i>
-            </a>
         </div>
 
-        <!--js link-->
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script src="script.js"></script>
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-          AOS.init({
-            'offset': 300,
-            'duration': 2000,
-          });
-        </script>
+        <aside class="hero-side">
+            <h3>Selected highlights</h3>
+            <div class="signal-list">
+                <div class="signal-item">
+                    <span class="signal-label">Client Systems</span>
+                    <span class="signal-value">Built and improved client-facing systems for building summaries, violations, inspections, and related reporting workflows.</span>
+                </div>
+                <div class="signal-item">
+                    <span class="signal-label">Scale</span>
+                    <span class="signal-value">99.9% uptime on deployed infrastructure and 1,000+ users served.</span>
+                </div>
+                <div class="signal-item">
+                    <span class="signal-label">Jack Jaffa</span>
+                    <span class="signal-value">Worked across Classic ASP and SQL Server to support multi-tenant client portal logic on top of 50+ tables, views, and CTEs.</span>
+                </div>
+                <div class="signal-item">
+                    <span class="signal-label">Data Work</span>
+                    <span class="signal-value">Built enrichment workflows using network-request analysis, cookie handling, and reCAPTCHA-solving style automation.</span>
+                </div>
+                <div class="signal-item">
+                    <span class="signal-label">Mentorship</span>
+                    <span class="signal-value">Two Google mentorships through Basta and one mentorship with Yext.</span>
+                </div>
+            </div>
+        </aside>
+    </header>
 
-    </body>
+    <section class="family-section reveal">
+        <div class="family-card">
+            <img src="img/siblings.jpg" alt="Matthew with his younger brother" class="family-photo">
+            <div class="family-copy">
+                <span class="eyebrow">Family</span>
+                <h2>Me and my brother.</h2>
+                <p>I have six siblings, and I hope each of them carries the same curiosity for technology, or for whatever field they choose to go into.</p>
+                <p>A lot of what drives me comes from wanting to keep learning, keep building, and keep figuring things out, and I’d love for them to have that same kind of curiosity in their own lives too.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section reveal">
+        <div class="section-header">
+            <h2>About</h2>
+            <p></p>
+        </div>
+
+        <div class="two-column">
+            <div class="card reveal reveal-delay-1">
+                <h3>What I’m good at</h3>
+                <p>I tend to do well when there are a lot of moving parts and no perfectly clean path forward. Old systems, messy workflows, heavy SQL, backend logic, data work, frontend cleanup, I’m comfortable stepping into whatever the project needs.</p>
+                <p>The work I’m proudest of usually helps in a real way. It saves time, removes friction, cuts down on mistakes, or makes something less frustrating for the people using it.</p>
+                <p>I also like working closely with people to understand what they actually need, turn that into a real plan, and explain clearly how we’re going to do it. Once we know the goal, I’m someone who sticks with it until it’s done right.</p>
+            </div>
+            <div class="card reveal reveal-delay-2">
+                <h3>What matters to me</h3>
+                <p>Being useful to a team matters to me. That can mean building something new, improving something old, or stepping into a problem that just needs ownership and follow-through.</p>
+                <p>Adapting quickly has become one of my strengths. Learning new tools, picking up the shape of a codebase, and getting productive fast is a big part of how I work.</p>
+                <p>Two Google mentorships through Basta and a mentorship with Yext were a big part of my growth. They helped me think more seriously about system design, engineering standards, and the kind of engineer I want to keep becoming.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reveal">
+        <div class="stats-grid">
+            <div class="stat-card reveal reveal-delay-1">
+                <strong>2.2x</strong>
+                <span>Faster personalized client document generation</span>
+            </div>
+            <div class="stat-card reveal reveal-delay-2">
+                <strong>3,000+</strong>
+                <span>Hours saved through reporting automation</span>
+            </div>
+            <div class="stat-card reveal reveal-delay-3">
+                <strong>99.9%</strong>
+                <span>Uptime on deployed bot infrastructure</span>
+            </div>
+            <div class="stat-card reveal">
+                <strong>50+</strong>
+                <span>Relational tables handled in production portal work</span>
+            </div>
+            <div class="stat-card reveal reveal-delay-1">
+                <strong>35%</strong>
+                <span>Reduction in trade discrepancies</span>
+            </div>
+            <div class="stat-card reveal reveal-delay-2">
+                <strong>30%</strong>
+                <span>Increase in on-time inspections</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section reveal">
+        <div class="section-header">
+            <h2>Experience</h2>
+            <p></p>
+        </div>
+
+        <div class="experience-list">
+            <article class="experience-item reveal reveal-delay-1">
+                <div class="experience-top">
+                    <div>
+                        <h3>Software Engineer</h3>
+                        <div class="company">Jack Jaffa &amp; Associates</div>
+                    </div>
+                    <div class="date">FEB 2025 - PRESENT</div>
+                </div>
+                <ul>
+                    <li>Built and improved a client portal in Classic ASP and SQL Server, working across large relational data models and operational workflows.</li>
+                    <li>Implemented client-specific session and access behavior to support different use cases across tenants.</li>
+                    <li>Optimized personalized client document generation for building summaries, violations, and handling notes, bringing runtime down from roughly 30 to 60 seconds to about 8 to 10.</li>
+                </ul>
+            </article>
+
+            <article class="experience-item reveal reveal-delay-2">
+                <div class="experience-top">
+                    <div>
+                        <h3>Derivatives Software Engineer</h3>
+                        <div class="company">SDM Financial</div>
+                    </div>
+                    <div class="date">JUN 2023 - FEB 2025</div>
+                </div>
+                <ul>
+                    <li>Built ETL pipelines on AWS for market-data workflows using Python, Pandas, NumPy, and PostgreSQL.</li>
+                    <li>Built a server-hosted trading bot that let traders send execution commands through WhatsApp.</li>
+                    <li>Automated reporting processes and saved over 3,000 labor hours annually.</li>
+                </ul>
+            </article>
+
+            <article class="experience-item reveal reveal-delay-3">
+                <div class="experience-top">
+                    <div>
+                        <h3>Software Engineering Intern</h3>
+                        <div class="company">J.P. Morgan Chase</div>
+                    </div>
+                    <div class="date">JAN 2023 - FEB 2023</div>
+                </div>
+                <ul>
+                    <li>Worked with data tooling and reporting automation in an enterprise environment.</li>
+                    <li>Used Athena, CI/CD workflows, and team review practices as part of production engineering work.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section id="projects" class="section reveal">
+        <div class="section-header">
+            <h2>Projects</h2>
+            <p></p>
+        </div>
+
+        <div class="project-grid">
+            <article class="project-card reveal reveal-delay-1">
+                <img src="img/dokkan_scraper_card.png" alt="Dokkan Scraper and AI">
+                <div class="project-content">
+                    <div class="tag-row">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scraping</span>
+                        <span class="tag">Web UI</span>
+                    </div>
+                    <h3>Dokkan Scraper &amp; AI</h3>
+                    <p>A Python toolkit for collecting, structuring, and exploring Dokkan Battle data through a local interface.</p>
+                    <a href="https://dokkanuniverse.netlify.app/" class="project-link">View Project</a>
+                </div>
+            </article>
+
+            <article class="project-card reveal reveal-delay-2">
+                <img src="img/discord_bot_card.png" alt="Discord Reminder Bot">
+                <div class="project-content">
+                    <div class="tag-row">
+                        <span class="tag">AWS ECS</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">GitHub Actions</span>
+                    </div>
+                    <h3>Discord Reminder Bot</h3>
+                    <p>A deployed reminder service with automated delivery and infrastructure that served more than 1,000 users.</p>
+                    <a href="https://github.com/mshvorin/reminderBot" class="project-link">View Repository</a>
+                </div>
+            </article>
+
+            <article class="project-card reveal reveal-delay-3">
+                <img src="img/misk_stock_card.png" alt="MISK">
+                <div class="project-content">
+                    <div class="tag-row">
+                        <span class="tag">React</span>
+                        <span class="tag">WebSockets</span>
+                        <span class="tag">Finance</span>
+                    </div>
+                    <h3>MISK Real-Time Stock News</h3>
+                    <p>A real-time finance concept focused on live updates, sentiment, and a more usable dashboard experience.</p>
+                    <a href="https://github.com/mshvorin" class="project-link">More on GitHub</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="contact" class="section reveal">
+        <div class="section-header">
+            <h2>Contact</h2>
+            <p>If you want to talk about work, projects, or opportunities, feel free to reach out.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="card reveal reveal-delay-1">
+                <h3>Reach me directly</h3>
+                <ul class="contact-list">
+                    <li>Email: <a href="mailto:mshvorin@gmail.com">mshvorin@gmail.com</a></li>
+                    <li>LinkedIn: <a href="https://linkedin.com/in/mshvorin">linkedin.com/in/mshvorin</a></li>
+                    <li>GitHub: <a href="https://github.com/mshvorin">github.com/mshvorin</a></li>
+                    <li>Location: Brooklyn, New York</li>
+                </ul>
+            </div>
+            <div class="card reveal reveal-delay-2">
+                <h3>Send a message</h3>
+                <form class="contact-form" action="https://formspree.io/f/xnqeqjow" method="POST">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="message" rows="6" placeholder="Your message" required></textarea>
+                    <button type="submit" class="btn-primary"><i class="fa-solid fa-paper-plane"></i>Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div>&copy; 2026 Matthew Shvorin</div>
+            <div class="footer-links">
+                <a href="https://github.com/mshvorin" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/mshvorin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:mshvorin@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const revealItems = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.14,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+    </script>
+</body>
+
 </html>
